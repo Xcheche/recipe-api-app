@@ -1,2 +1,3 @@
 # recipe-api-app
-Recipe App
+
+Recipe Django App
