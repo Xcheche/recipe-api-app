@@ -7,7 +7,7 @@ Go to your account settings → Security → New Access Token.
 
 Generate a token and copy it.
 
-Add the token as a secret in GitHub:
+-----------------------Add the token as a secret in GitHub-------------------------------
 
 Go to your GitHub repository ofthe current project you are working on.
 
