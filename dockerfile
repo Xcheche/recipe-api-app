@@ -29,14 +29,19 @@ ARG DEV=false
 # conditionally install dev dependencies, clean up temp files, and add a non-root user
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
+    # Adding postgres additional dependencies   and adapters
+    apk add  --update --no-cache postgresql-client gcc python3-dev musl-dev libffi-dev && \
+    apk add --no-cache --virtual .build-deps build-base postgresql-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
+    # Remove build dependencies to reduce image size
+    apk del .build-deps && \
     adduser \
     --disabled-password \
-    --no-create-home \
+    --no-create-home \ 
     django-user
 
 # Add virtual environment's bin directory to PATH
