@@ -16,19 +16,39 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - recipe-api-network
 
   web:
     build: .
     command: sh -c "python manage.py wait_db && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    volumes: 
+    volumes:
       - ./app:/app
     env_file:
       - .env
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - recipe-api-network
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - recipe-api-network
+    environment:
+      ADMINER_DEFAULT_SERVER: db
 
 volumes:
   postgres_data:
+
+networks:
+  recipe-api-network:
+    driver: bridge

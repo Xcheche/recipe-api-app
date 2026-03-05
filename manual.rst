@@ -24,3 +24,9 @@ Similarly, add your Docker Hub username as a secret, e.g., DOCKERHUB_USERNAME.
 Use the secrets in your GitHub Actions workflow:
 -------------------------------To add another django app------------------------------------
 docker  compose  exec web python manage.py startapp new_app_name
+
+
+superuser(
+    xcheche@gmail.com
+    199200
+)
