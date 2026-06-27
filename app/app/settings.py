@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     # custom apps
     'core_app',
     'accounts',
+
+    # third-party apps
+    'rest_framework',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +149,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Django REST Framework settings
+
+# Drf spectacular settings
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
