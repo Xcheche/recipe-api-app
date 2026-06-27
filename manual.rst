@@ -9,7 +9,7 @@ Generate a token and copy it.
 
 -----------------------Add the token as a secret in GitHub-------------------------------
 
-Go to your GitHub repository ofthe current project you are working on.
+Go to your GitHub repository of the current project you are working on.
 
 Click on Settings → Security → Secrets and variables → Actions.
 
